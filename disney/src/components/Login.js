@@ -4,7 +4,12 @@ import React from 'react';
 const Login = (props) => {
    return(
       <Container>
-         <Content><BgImage/></Content>
+         <Content>
+            <Logos>                  
+               <LogoOne src = "/images/logo-one.svg"/>
+            </Logos>
+            <BgImage/>
+            </Content>
       </Container>
    )
    }
@@ -44,4 +49,18 @@ const Login = (props) => {
   z-index: -1;
 `;
 
+const Logos = styled.div`
+max-width: 650px;
+width: 100%;
+display: flex;
+flex-direction: column;
+`;
+
+const LogoOne = styled.img`
+  margin-bottom: 12px;
+  max-width: 600px;
+  min-height: 1px;
+  display: block;
+  width: 100%;
+`;
 export default Login;
