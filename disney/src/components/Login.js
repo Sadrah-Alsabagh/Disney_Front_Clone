@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import React from 'react';
+// import styled from 'styled-components';
 
-const Login = (props) => {
-   <h1> Hello </h1>
-}
+const Login = (props) => (
+   <h1> Login </h1>
+)
 
 export default Login;
