@@ -1,5 +1,5 @@
 import React from 'react';
- import styled from 'styled-components';
+import styled from 'styled-components';
 
 const Login = (props) => {
    return(
@@ -7,6 +7,7 @@ const Login = (props) => {
          <Content>
             <Logos>                  
                <LogoOne src = "/images/logo-one.svg"/>
+               <SignUp>Sign Up Now  &gt;</SignUp>
             </Logos>
             <BgImage/>
             </Content>
@@ -63,4 +64,24 @@ const LogoOne = styled.img`
   display: block;
   width: 100%;
 `;
+
+const SignUp = styled.a`
+  font-weight: bold;
+  color: #f9f9f9;
+  background-color: #0742C3;
+  margin-bottom: 12px;
+  margin-top: 20px;
+  transform: translatex(50%);  
+  width: 50%;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  padding: 16.5px 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #0483ee;
+  }
+`;
+
 export default Login;
