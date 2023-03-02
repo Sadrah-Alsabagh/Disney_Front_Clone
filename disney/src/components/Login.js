@@ -7,6 +7,7 @@ const Login = (props) => {
          <Content>
             <Logos>                  
                <LogoOne src = "/images/logo-one.svg"/>
+               <Description>2.99 JOD per month or 28.99 JOD per year</Description>
                <SignUp>Sign Up Now  &gt;</SignUp>
             </Logos>
             <BgImage/>
@@ -83,5 +84,15 @@ const SignUp = styled.a`
     background-color: #0483ee;
   }
 `;
+
+const Description = styled.p`
+  color: hsla(0, 0%, 95.3%, 1);
+  font-size: 4vh;
+  font-weight: bold;
+  margin: 5 0 24px;
+  margin-bottom: 0px;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+`
 
 export default Login;
