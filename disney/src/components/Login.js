@@ -9,6 +9,7 @@ const Login = (props) => {
                <LogoOne src = "/images/logo-one.svg"/>
                <Description>2.99 JOD per month or 28.99 JOD per year</Description>
                <SignUp>Sign Up Now  &gt;</SignUp>
+               <LogoTwo src ="/images/logo-two.png"/>
             </Logos>
             <BgImage/>
             </Content>
@@ -93,6 +94,15 @@ const Description = styled.p`
   margin-bottom: 0px;
   line-height: 1.5;
   letter-spacing: 1.5px;
-`
+`;
+
+const LogoTwo = styled.img`
+  max-width: 600px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100%;
+`;
 
 export default Login;
