@@ -7,6 +7,7 @@ const Header = (props) => {
       <Logo>
         <img src="/images/logo.svg" alt="Disney+" />
       </Logo>
+      <NavMenue>Menue</NavMenue>
     </Nav>
   );
 };
@@ -38,6 +39,30 @@ const Logo = styled.a`
     display: block;
     width: 100%;
   }
+`;
+
+const NavMenue = styled.div`
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100%;
+  justify-content: flex-end;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  margin-right: auto;
+  margin-left: 25px;
+/* 
+  @media (max-width: 768px) {
+    display: none;
+  } */
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+
+      }
 `;
 
 export default Header;
