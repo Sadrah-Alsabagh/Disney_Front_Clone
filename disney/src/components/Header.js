@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { auth, provider } from '../firebase';
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +13,18 @@ import {
 
 const Header = (props) => {
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+
+  useEffect(() =>{
+    auth.onAuthStateChanged(async (user) => {
+      if(user){
+        setUser(user);
+        navigate("/home")
+      }
+    });
+  },[userName]);
 
   const handleAuth = () => {
     auth.signInWithPopup(provider).then((result) => {
