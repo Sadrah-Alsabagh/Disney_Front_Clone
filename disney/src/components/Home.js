@@ -15,8 +15,7 @@ const Home = (props) => {
             <Recommends />
             <NewDisney />
             <Originals />
-            <Trending />
-            
+            <Trending /> 
         </Container>
     )
 };
