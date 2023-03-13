@@ -1,28 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectRecommend } from "../features/movie/movieSlice";
 
 const Trending = (props) => {
+  const movies = useSelector(selectRecommend);
 
 
   return (
     <Container>
       <h4>Trending</h4>
       <Content>
-      <Wrap>
-            <img src='/images/viewers-starwars.png'/>
-        </Wrap>
-
-        <Wrap>
-            <img src='/images/viewers-starwars.png'/>
-        </Wrap>
-
-        <Wrap>
-            <img src='/images/viewers-starwars.png'/>
-        </Wrap>
-
-        <Wrap>
-            <img src='/images/viewers-starwars.png'/>
-        </Wrap>
+      {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/` + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
        
       </Content>
     </Container>
