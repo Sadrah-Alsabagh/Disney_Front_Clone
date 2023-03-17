@@ -1,14 +1,67 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
+import { auth, provider } from '../firebase';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from "../features/user/userSlice";
 
 const Login = (props) => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+
+  useEffect(() =>{
+    auth.onAuthStateChanged(async (user) => {
+      if(user){
+        setUser(user);
+        navigate("/home")
+      }
+    });
+  },[userName]);
+
+  const handleAuth = () => {
+    if(!userName){
+
+    auth.signInWithPopup(provider).then((result) => {
+      // console.log(result);
+      setUser(result.user);
+    }).catch((error) => {
+      alert(error.message)
+    })
+
+  } else if (userName){
+    auth.signOut().then(() => {
+      dispatch(setSignOutState());
+      navigate('/')
+    }).catch(err => alert(err.message))
+  }
+};
+
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
+
    return(
       <Container>
          <Content>
             <Logos>                  
                <LogoOne src = "/images/logo-one.svg"/>
                <Description>2.99 JOD per month or 28.99 JOD per year</Description>
-               <SignUp>Sign Up Now  &gt;</SignUp>
+               <SignUp onClick={handleAuth}>Sign In Now  &gt;</SignUp>
                <LogoTwo src ="/images/logo-two.png"/>
             </Logos>
             <BgImage/>
@@ -80,6 +133,7 @@ const SignUp = styled.a`
   padding: 16.5px 0;
   border: 1px solid transparent;
   border-radius: 4px;
+  cursor: pointer;
 
   &:hover {
     background-color: #0483ee;
